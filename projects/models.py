@@ -13,7 +13,7 @@ class Project(models.Model):
 
 class Task(models.Model):
     name = models.CharField(max_length=255)
-    project_id = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="tasks")
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="tasks")
     priority = models.IntegerField()
     status = models.BooleanField(default=False)
     deadline = models.DateTimeField()
