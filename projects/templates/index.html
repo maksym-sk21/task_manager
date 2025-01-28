@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Task Manager{% endblock %}
+
+{% block content %}
+<div class="row" style="min-height: 90vh; padding-bottom: 80px;">
+    <div class="col-12">
+        {% if user.is_authenticated %}
+            <h3 class="mb-4">Your Projects</h3>
+            <div id="projects" hx-get="{% url 'project_list' %}" hx-trigger="load" hx-target="#projects"></div>
+        {% else %}
+            <div class="text-center">
+                <h2>Please log in to your account</h2>
+                <a href="{% url 'account_login' %}" class="btn btn-primary">Log In</a>
+                <a href="{% url 'account_signup' %}" class="btn btn-secondary">Sign Up</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+    <footer class="fixed-bottom bg-white text-white">
+        <div class="container text-center py-3">
+            <button class="btn btn-primary" hx-post="{% url 'project_create' %}"
+                    hx-vals='{"name": "Edit me"}' hx-target="#projects" hx-swap="innerHTML">
+                ADD TODO LIST
+            </button>
+        </div>
+    </footer>
+{% endblock %}

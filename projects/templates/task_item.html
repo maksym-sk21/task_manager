@@ -1,0 +1,18 @@
+<div class="row mb-3">
+    <form id="task-update-form"
+          hx-post="{% url 'task_update' project.id task.id %}"
+          hx-target="#tasks-{{ project.id }}"
+          hx-swap="innerHTML">
+        <div class="row g-3 align-items-center">
+            <div class="col">
+                <input type="text" id="task-name" name="name" class="form-control" value="{{ form.name.value }}" required>
+                <input type="datetime-local" id="deadline" name="deadline" class="form-control" value="{{ form.deadline.value }}" required>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-success">
+                    <i class="bi bi-check-circle"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

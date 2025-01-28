@@ -1,0 +1,47 @@
+{% for task in tasks %}
+<div class="col-12">
+        <ul class="list-group">
+                <li class="list-group-item d-flex align-items-center"
+                    id="task-{{ task.id }}"
+                    style="position: relative;">
+                    <input type="checkbox"
+                           class="form-check-input me-2"
+                           hx-post="{% url 'task_status_toggle' project.id task.id %}"
+                           hx-target="#tasks-{{ project.id }}"
+                           hx-swap="innerHTML"
+                           {% if task.status %} checked {% endif %} />
+                    <div class="border-start ps-3 flex-grow-1">
+                        {{ task.name }} - {{ task.deadline }}
+                    </div>
+                    <div class="task-actions">
+                        <button class="btn btn-light btn-sm me-2"
+                                hx-post="{% url 'task_priority_up' project.id task.id %}"
+                                hx-target="#tasks-{{ project.id }}"
+                                hx-swap="innerHTML">
+                            <i class="bi bi-arrow-up-circle"></i>
+                        </button>
+                        <button class="btn btn-light btn-sm me-2"
+                                hx-post="{% url 'task_priority_down' project.id task.id %}"
+                                hx-target="#tasks-{{ project.id }}"
+                                hx-swap="innerHTML">
+                            <i class="bi bi-arrow-down-circle"></i>
+                        </button>
+                    </div>
+                    <div class="task-actions">
+                        <button class="btn btn-light btn-sm me-2"
+                                hx-get="{% url 'task_update' project.id task.id %}"
+                                hx-target="#task-{{ task.id }}">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-light btn-sm"
+                                hx-delete="{% url 'task_delete' project.id task.id %}"
+                                hx-confirm="Are you sure?"
+                                hx-target="#tasks-{{ project.id }}">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                </li>
+        </ul>
+    </div>
+{% endfor %}
+
