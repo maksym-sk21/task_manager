@@ -15,6 +15,8 @@ Task Manager is a task management web application developed in Django using Post
 - Django — the main framework for the web application
 - PostgreSQL — database
 - Docker and docker-compose — for containerization
+- HTMX — for asynchronous interface updates without using JavaScript
+- Bootstrap Grid System — for adaptive layout
 - For a full list of dependencies, check the requirements.txt file.
 
 ## Steps to run the application
