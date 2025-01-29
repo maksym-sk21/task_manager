@@ -11,7 +11,7 @@
                            hx-swap="innerHTML"
                            {% if task.status %} checked {% endif %} />
                     <div class="border-start ps-3 flex-grow-1">
-                        {{ task.name }} - {{ task.deadline }}
+                        {{ task.name }} - {{ task.deadline|date:"d.m.Y H:i" }}
                     </div>
                     <div class="task-actions">
                         <button class="btn btn-light btn-sm me-2"

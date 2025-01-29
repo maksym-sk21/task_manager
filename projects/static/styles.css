@@ -1,0 +1,15 @@
+.task-actions {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .list-group-item:hover .task-actions {
+        display: flex;
+    }
+}
+
+@media (max-width: 767px) {
+    .task-actions {
+        display: flex;
+    }
+}
